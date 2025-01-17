@@ -15,7 +15,7 @@ class _QuizState extends State<Quiz> {
   Widget? activeScreen; // caan also be null 
 
   @override
-  void initState() {
+  void initState() { // to reference the swicth screen
     activeScreen = StartScreen(swicthScreen);
     super.initState();
   }
