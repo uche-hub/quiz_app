@@ -12,18 +12,24 @@ class Quiz extends StatefulWidget {
 }
 
 class _QuizState extends State<Quiz> {
-  Widget? activeScreen; // caan also be null 
+  Widget? activeScreen; // caan also be null
+  final List<String> selectedAnswer = [];
 
   @override
-  void initState() { // to reference the swicth screen
+  void initState() {
+    // to reference the swicth screen
     activeScreen = StartScreen(swicthScreen);
     super.initState();
   }
 
   void swicthScreen() {
     setState(() {
-      activeScreen = Question();
+      activeScreen = Question(onSleectAnswer: chooseAnswer,);
     });
+  }
+
+  void chooseAnswer(String answer) {
+    selectedAnswer.add(answer);
   }
 
   @override
