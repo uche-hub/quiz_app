@@ -32,19 +32,30 @@ class _QuizState extends State<Quiz> {
     });
   }
 
+  void restartQuiz() {
+    setState(() {
+      selectedAnswer = [];
+      activeScreen = Question(
+        onSleectAnswer: chooseAnswer,
+      );
+    });
+  }
+
   void chooseAnswer(String answer) {
     selectedAnswer.add(answer);
 
     if (selectedAnswer.length == questions.length) {
       setState(() {
-        activeScreen = ResultScreen(chosenAnswers: selectedAnswer,);
+        activeScreen = ResultScreen(
+          chosenAnswers: selectedAnswer,
+          onRestart: restartQuiz,
+        );
       });
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    
     // TODO: implement build
     return MaterialApp(
       debugShowCheckedModeBanner: false,
